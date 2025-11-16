@@ -21,7 +21,20 @@ connectDB();
 const app = express();
 
 //middlewares
-app.use(cors());
+// CORS configuration for production
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",
+    "https://ai-utility-app.vercel.app",
+    "https://ai-utility-app-*.vercel.app", // For preview deployments
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
