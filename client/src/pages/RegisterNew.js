@@ -175,7 +175,7 @@ const Register = () => {
             Get Started
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Create your DevTinder AI account
+            Create your AI-VERSE AI account
           </Typography>
         </Box>
 

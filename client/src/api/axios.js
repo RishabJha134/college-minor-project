@@ -1,5 +1,5 @@
 /**
- * Axios Instance Configuration for DevTinder AI Platform
+ * Axios Instance Configuration for AI-VERSE AI Platform
  * 
  * This file sets up axios with interceptors for:
  * - Authentication token injection

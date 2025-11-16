@@ -136,7 +136,7 @@ const Login = () => {
             Welcome Back!
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Sign in to continue to DevTinder AI
+            Sign in to continue to AI-VERSE AI
           </Typography>
         </Box>
 

@@ -1,5 +1,5 @@
 /**
- * Utility Helper Functions for DevTinder AI Platform
+ * Utility Helper Functions for AI-VERSE AI Platform
  */
 
 import toast from 'react-hot-toast';

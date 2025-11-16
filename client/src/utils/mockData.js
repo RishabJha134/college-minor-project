@@ -1,5 +1,5 @@
 /**
- * Mock Data for DevTinder AI Platform
+ * Mock Data for AI-VERSE AI Platform
  * Provides realistic conversation data for development and testing
  */
 
@@ -315,7 +315,7 @@ export const aiTools = [
 export const mockUser = {
   id: 'user-1',
   name: 'Developer',
-  email: 'dev@devtinder.ai',
+  email: 'dev@AI-VERSE.ai',
   avatar: null,
   plan: 'Pro',
   usage: {

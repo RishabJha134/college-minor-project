@@ -21,7 +21,7 @@ function AppContent() {
 
   // Show loading while checking auth status
   if (isAuthenticated === null) {
-    return <FullScreenLoader message="Initializing DevTinder AI..." />;
+    return <FullScreenLoader message="Initializing AI-VERSE AI..." />;
   }
 
   return (

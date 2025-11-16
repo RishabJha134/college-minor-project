@@ -71,9 +71,9 @@ const Homepage = () => {
     },
     {
       icon: <Transform sx={{ fontSize: 40 }} />,
-      title: "Code Converter",
+      title: "JS Code Converter",
       description:
-        "Convert code between different programming languages instantly. Support for JavaScript, Python, Java, and more.",
+        "Convert Simple English to JavaScript very fast and efficient.",
       color: theme.palette.mode === "dark" ? "#818cf8" : "#4f46e5",
       tags: ["Multi-language", "Instant"],
       route: "/js-converter",
@@ -743,7 +743,7 @@ const Homepage = () => {
       </Box>
 
       {/* Stats Section */}
-      <Box
+      {/* <Box
         sx={{
           py: 6,
           bgcolor:
@@ -791,7 +791,7 @@ const Homepage = () => {
             ))}
           </Grid>
         </Container>
-      </Box>
+      </Box> */}
 
       {/* Features Section */}
       <Box
@@ -1068,7 +1068,7 @@ const Homepage = () => {
                 backgroundClip: "text",
               }}
             >
-              Why Choose DevTinder AI?
+              Why Choose AI-VERSE AI?
             </Typography>
           </Box>
 
@@ -1190,7 +1190,7 @@ const Homepage = () => {
                     </Avatar>
                     <Box>
                       <Typography variant="h6" fontWeight={700}>
-                        DevTinder AI
+                        AI-VERSE AI
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         AI Utility Platform
@@ -1237,14 +1237,14 @@ const Homepage = () => {
                   backgroundClip: "text",
                 }}
               >
-                About DevTinder AI
+                About AI-VERSE AI
               </Typography>
               <Typography
                 variant="body1"
                 color="text.secondary"
                 sx={{ mb: 3, lineHeight: 1.8, fontSize: "1.1rem" }}
               >
-                DevTinder AI is a comprehensive AI utility platform designed to
+                AI-VERSE AI is a comprehensive AI utility platform designed to
                 empower developers, content creators, and professionals with
                 cutting-edge artificial intelligence tools. Our mission is to
                 make advanced AI technology accessible and easy to use for
@@ -1258,7 +1258,7 @@ const Homepage = () => {
                 From intelligent chatbots to code converters, text summarizers to
                 image generators, we provide a suite of tools that streamline
                 your workflow and boost your productivity. Built with modern
-                technologies and powered by state-of-the-art AI models, DevTinder
+                technologies and powered by state-of-the-art AI models, AI-VERSE
                 AI is your go-to platform for all AI needs.
               </Typography>
               <Typography
@@ -1266,7 +1266,7 @@ const Homepage = () => {
                 color="text.secondary"
                 sx={{ lineHeight: 1.8, fontSize: "1.1rem" }}
               >
-                Join thousands of users who trust DevTinder AI for their daily
+                Join thousands of users who trust AI-VERSE AI for their daily
                 tasks and creative projects. Experience the future of AI-assisted
                 development and content creation today.
               </Typography>
@@ -1367,10 +1367,10 @@ const Homepage = () => {
                         Email
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        support@devtinderai.com
+                        support@AI-VERSEai.com
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        info@devtinderai.com
+                        info@AI-VERSEai.com
                       </Typography>
                     </Box>
                   </Box>
@@ -1408,10 +1408,10 @@ const Homepage = () => {
                         Phone
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        +1 (555) 123-4567
+                        +91 1234 5678 125
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Mon-Fri, 9AM-6PM EST
+                        Mon-Fri, 9AM-6PM IST
                       </Typography>
                     </Box>
                   </Box>
@@ -1449,10 +1449,10 @@ const Homepage = () => {
                         Location
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Silicon Valley, CA
+                        New Delhi
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        United States
+                        India
                       </Typography>
                     </Box>
                   </Box>

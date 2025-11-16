@@ -118,7 +118,7 @@ const Navbar = () => {
                 letterSpacing: '-0.02em',
               }}
             >
-              DevTinder AI
+              AI-VERSE
             </Typography>
             {!isMobile && (
               <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.65rem', letterSpacing: '0.05em' }}>

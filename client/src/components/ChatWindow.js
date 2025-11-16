@@ -189,7 +189,7 @@ const ChatWindow = ({ conversation }) => {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Welcome to DevTinder AI 🚀
+            Welcome to AI-VERSE AI 🚀
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ mb: 4, maxWidth: 600 }}>
             Your intelligent AI assistant for development tasks, code conversion, summarization, and creative content generation.

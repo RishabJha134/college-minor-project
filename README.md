@@ -1,8 +1,8 @@
-# 🚀 DevTinder AI - Complete AI Utility Platform
+# 🚀 AI-VERSE AI - Complete AI Utility Platform
 
 <div align="center">
 
-![DevTinder AI](https://img.shields.io/badge/DevTinder-AI%20Platform-22d3ee?style=for-the-badge&logo=react&logoColor=white)
+![AI-VERSE AI](https://img.shields.io/badge/AI-VERSE-AI%20Platform-22d3ee?style=for-the-badge&logo=react&logoColor=white)
 ![MERN Stack](https://img.shields.io/badge/MERN-Stack-10b981?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-818cf8?style=for-the-badge)
 
@@ -34,9 +34,9 @@
 
 ## 🎯 About
 
-**DevTinder AI** is a comprehensive AI utility platform built with the MERN stack (MongoDB, Express.js, React.js, Node.js) that provides multiple AI-powered tools in a single, beautiful interface. From intelligent chatbots to code converters, text summarizers to image generators, DevTinder AI empowers developers, content creators, and professionals with cutting-edge artificial intelligence capabilities.
+**AI-VERSE AI** is a comprehensive AI utility platform built with the MERN stack (MongoDB, Express.js, React.js, Node.js) that provides multiple AI-powered tools in a single, beautiful interface. From intelligent chatbots to code converters, text summarizers to image generators, AI-VERSE AI empowers developers, content creators, and professionals with cutting-edge artificial intelligence capabilities.
 
-### Why DevTinder AI?
+### Why AI-VERSE AI?
 
 - 🤖 **Multiple AI Tools** - Access 6+ AI-powered utilities in one platform
 - 🎨 **Beautiful UI** - Premium SAAS-grade design with glassmorphism and smooth animations
@@ -531,7 +531,7 @@ npm test -- --coverage
 **Backend:**
 ```bash
 cd backend
-heroku create devtinder-ai-backend
+heroku create AI-VERSE-ai-backend
 git push heroku main
 heroku config:set MONGO_URI=your_mongo_uri
 heroku config:set JWT_SECRET=your_jwt_secret
@@ -630,7 +630,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```
 MIT License
 
-Copyright (c) 2025 DevTinder AI
+Copyright (c) 2025 AI-VERSE AI
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -673,7 +673,7 @@ SOFTWARE.
 ## 📞 Contact
 
 - **GitHub**: [@RishabJha134](https://github.com/RishabJha134)
-- **Email**: support@devtinderai.com
+- **Email**: support@AI-VERSEai.com
 - **Project Link**: [https://github.com/RishabJha134/college-minor-project](https://github.com/RishabJha134/college-minor-project)
 
 ---
@@ -698,10 +698,10 @@ Give a ⭐️ if this project helped you!
 
 <div align="center">
 
-**Made with ❤️ by DevTinder AI Team**
+**Made with ❤️ by AI-VERSE AI Team**
 
 ⭐ Star us on GitHub — it helps!
 
-[⬆ Back to Top](#-devtinder-ai---complete-ai-utility-platform)
+[⬆ Back to Top](#-AI-VERSE-ai---complete-ai-utility-platform)
 
 </div>
