@@ -1,9 +1,9 @@
-const errorHandler = require("../middelwares/errorMiddleware");
-const userModel = require("../models/userModel");
-const errorResponse = require("../utils/errroResponse");
+import errorHandler from "../middelwares/errorMiddleware.js";
+import userModel from "../models/userModel.js";
+import errorResponse from "../utils/errroResponse.js";
 
 // JWT TOKEN
-exports.sendToken = (user, statusCode, res) => {
+export const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken(res);
   res.status(statusCode).json({
     success: true,
@@ -12,7 +12,7 @@ exports.sendToken = (user, statusCode, res) => {
 };
 
 //REGISTER
-exports.registerContoller = async (req, res, next) => {
+export const registerContoller = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
     //exisitng user
@@ -21,7 +21,7 @@ exports.registerContoller = async (req, res, next) => {
       return next(new errorResponse("Email is already register", 500));
     }
     const user = await userModel.create({ username, email, password });
-    this.sendToken(user, 201, res);
+    sendToken(user, 201, res);
   } catch (error) {
     console.log(error);
     next(error);
@@ -29,7 +29,7 @@ exports.registerContoller = async (req, res, next) => {
 };
 
 //LOGIN
-exports.loginController = async (req, res, next) => {
+export const loginController = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     //validation
@@ -45,7 +45,7 @@ exports.loginController = async (req, res, next) => {
       return next(new errorResponse("Invalid Creditial", 401));
     }
     //res
-    this.sendToken(user, 200, res);
+    sendToken(user, 200, res);
   } catch (error) {
     console.log(error);
     next(error);
@@ -53,7 +53,7 @@ exports.loginController = async (req, res, next) => {
 };
 
 //LOGOUT
-exports.logoutController = async (req, res) => {
+export const logoutController = async (req, res) => {
   res.clearCookie("refreshToken");
   return res.status(200).json({
     success: true,

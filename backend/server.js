@@ -1,14 +1,15 @@
-const express = require("express");
-const morgan = require("morgan");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const colors = require("colors");
-const dotenv = require("dotenv");
-const connectDB = require("./config/db");
-const errorHandler = require("./middelwares/errorMiddleware");
+import express from "express";
+import morgan from "morgan";
+import cors from "cors";
+import bodyParser from "body-parser";
+import colors from "colors";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import errorHandler from "./middelwares/errorMiddleware.js";
 
 //routes path
-const authRoutes = require("./routes/authRoutes");
+import authRoutes from "./routes/authRoutes.js";
+import openaiRoutes from "./routes/openaiRoutes.js";
 
 //dotenv
 dotenv.config();
@@ -30,7 +31,7 @@ const PORT = process.env.PORT || 8080;
 
 //API routes
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/openai", require("./routes/openaiRoutes"));
+app.use("/api/v1/openai", openaiRoutes);
 
 //listen server
 app.listen(PORT, () => {

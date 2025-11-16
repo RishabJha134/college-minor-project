@@ -1,19 +1,21 @@
-const express = require("express");
-const {
+import express from "express";
+import {
   summaryController,
   paragraphController,
   chatbotController,
   jsconverterController,
   scifiImageController,
-} = require("../controllers/openiaController");
+  healthController,
+} from "../controllers/openiaController.js";
 
 const router = express.Router();
 
-//route
+//routes
+router.get("/health", healthController);
 router.post("/summary", summaryController);
 router.post("/paragraph", paragraphController);
 router.post("/chatbot", chatbotController);
 router.post("/js-converter", jsconverterController);
-// router.post("/scifi-image", scifiImageController);
+router.post("/scifi-image", scifiImageController);
 
-module.exports = router;
+export default router;

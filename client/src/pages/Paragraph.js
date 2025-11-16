@@ -1,75 +1,121 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import {
   Box,
   Typography,
   useTheme,
-  useMediaQuery,
   TextField,
   Button,
   Alert,
   Collapse,
   Card,
+  CircularProgress,
 } from "@mui/material";
+import { Article, Send } from "@mui/icons-material";
+import { MinimalLoader } from "../components/Loader";
 
 const Paragraph = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
-  //media
-  const isNotMobile = useMediaQuery("(min-width: 1000px)");
-  // states
   const [text, settext] = useState("");
   const [para, setPara] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  //register ctrl
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!text.trim()) {
+      toast.error("Please enter keywords or topic!");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    setPara("");
+    const loadingToast = toast.loading("Generating paragraph...");
+
     try {
       const { data } = await axios.post("/api/v1/openai/paragraph", { text });
       console.log(data);
-      setPara(data.paragraph);
+      setPara(data.paragraph || data);
+      toast.success("Paragraph generated!", { id: loadingToast });
     } catch (err) {
-      console.log(error);
-      if (err.response.data.error) {
-        setError(err.response.data.error);
-      } else if (err.message) {
-        setError(err.message);
-      }
-      setTimeout(() => {
-        setError("");
-      }, 5000);
+      console.error("Paragraph Error:", err);
+      const errorMessage = err.response?.data?.error || err.response?.data?.message || err.message || "Failed to generate paragraph";
+      setError(errorMessage);
+      toast.error(errorMessage, { id: loadingToast });
+    } finally {
+      setLoading(false);
     }
   };
   return (
     <Box
-      width={isNotMobile ? "40%" : "80%"}
-      p={"2rem"}
-      m={"2rem auto"}
-      borderRadius={5}
-      sx={{ boxShadow: 5 }}
-      backgroundColor={theme.palette.background.alt}
+      sx={{ 
+        width: '100%',
+        height: 'calc(100vh - 64px)',
+        overflow: 'auto',
+        bgcolor: 'background.default',
+        '&::-webkit-scrollbar': {
+          width: '8px',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          bgcolor: 'divider',
+          borderRadius: '4px',
+        },
+      }}
     >
+      <Box
+        sx={{
+          maxWidth: '48rem',
+          margin: '0 auto',
+          p: { xs: 2, md: 4 },
+        }}
+      >
       <Collapse in={!!error}>
         <Alert severity="error" sx={{ mb: 2 }}>
           {error}
         </Alert>
       </Collapse>
+      
       <form onSubmit={handleSubmit}>
-        <Typography variant="h3">Generate Paragraph</Typography>
+        {/* Header with Icon */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+          <Article sx={{ fontSize: 40, color: 'primary.main' }} />
+          <Box>
+            <Typography variant="h4" fontWeight={700}>
+              Paragraph Generator
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Generate well-structured paragraphs from your keywords
+            </Typography>
+          </Box>
+        </Box>
 
         <TextField
-          placeholder="add your text"
+          placeholder="Enter keywords or topic (e.g., 'climate change impacts')"
           type="text"
           multiline={true}
           required
+          rows={4}
           margin="normal"
           fullWidth
           value={text}
           onChange={(e) => {
             settext(e.target.value);
+          }}
+          disabled={loading}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              borderRadius: 2,
+              '& fieldset': {
+                borderColor: theme.palette.divider,
+              },
+              '&:hover fieldset': {
+                borderColor: theme.palette.primary.main,
+              },
+            },
           }}
         />
 
@@ -78,54 +124,68 @@ const Paragraph = () => {
           fullWidth
           variant="contained"
           size="large"
-          sx={{ color: "white", mt: 2 }}
+          disabled={loading}
+          startIcon={loading ? <CircularProgress size={20} /> : <Send />}
+          sx={{ 
+            color: "white", 
+            mt: 2,
+            py: 1.5,
+            borderRadius: 2,
+            textTransform: 'none',
+            fontSize: '1rem',
+            fontWeight: 600,
+          }}
         >
-          Generate
+          {loading ? "Generating..." : "Generate Paragraph"}
         </Button>
-        <Typography mt={2}>
-          not this tool ? <Link to="/">GO BACK</Link>
+        
+        <Typography mt={2} color="text.secondary" textAlign="center">
+          Not the right tool? <Link to="/" style={{ color: theme.palette.primary.main }}>Go Back</Link>
         </Typography>
       </form>
 
-      {para ? (
-        <Card
-          sx={{
-            mt: 4,
-            border: 1,
-            boxShadow: 0,
-            height: "500px",
-            borderRadius: 5,
-            borderColor: "natural.medium",
-            bgcolor: "background.default",
-          }}
-        >
-          <Typography p={2}>{para}</Typography>
-        </Card>
-      ) : (
-        <Card
-          sx={{
-            mt: 4,
-            border: 1,
-            boxShadow: 0,
-            height: "500px",
-            borderRadius: 5,
-            borderColor: "natural.medium",
-            bgcolor: "background.default",
-          }}
-        >
-          <Typography
-            variant="h5"
-            color="natural.main"
-            sx={{
-              textAlign: "center",
-              verticalAlign: "middel",
-              lineHeight: "450px",
-            }}
-          >
-            Your Paragraph Will Apprea Here
-          </Typography>
-        </Card>
-      )}
+      {/* Response Card with Three States */}
+      <Card
+        sx={{
+          mt: 4,
+          border: 1,
+          boxShadow: 0,
+          minHeight: loading ? "200px" : para ? "auto" : "400px",
+          maxHeight: "600px",
+          borderRadius: 2,
+          borderColor: "divider",
+          bgcolor: "background.paper",
+          overflow: "auto",
+          p: 3,
+        }}
+      >
+        {loading ? (
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 150, gap: 2 }}>
+            <MinimalLoader />
+            <Typography color="text.secondary">Creating your paragraph...</Typography>
+          </Box>
+        ) : para ? (
+          <Box>
+            <Typography variant="h6" fontWeight={600} mb={2} color="primary.main">
+              📄 Generated Paragraph
+            </Typography>
+            <Typography variant="body1" lineHeight={1.8} sx={{ whiteSpace: 'pre-wrap' }}>
+              {para}
+            </Typography>
+          </Box>
+        ) : (
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 350, gap: 2 }}>
+            <Article sx={{ fontSize: 80, color: 'action.disabled', opacity: 0.3 }} />
+            <Typography variant="h6" color="text.secondary" textAlign="center">
+              Your paragraph will appear here
+            </Typography>
+            <Typography variant="body2" color="text.secondary" textAlign="center" maxWidth="400px">
+              Enter keywords or a topic above and click "Generate Paragraph" to get started
+            </Typography>
+          </Box>
+        )}
+      </Card>
+      </Box>
     </Box>
   );
 };

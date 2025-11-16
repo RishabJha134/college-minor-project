@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const JWT = require("jsonwebtoken");
-const cookie = require("cookie");
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import JWT from "jsonwebtoken";
+import cookie from "cookie";
 
 //models
 const userSchema = new mongoose.Schema({
@@ -66,7 +66,7 @@ userSchema.methods.getSignedToken = function (res) {
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+export default User;
 
 
 

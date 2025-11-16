@@ -1,6 +1,7 @@
 {
   "name": "chat-gpt-clone",
   "version": "1.0.0",
+  "type": "module",
   "description": "chat gpt clone",
   "main": "server.js",
   "scripts": {
