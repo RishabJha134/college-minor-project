@@ -12,7 +12,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 // Base URL from environment variable or default
-const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080';
+const BASE_URL = "https://college-minor-project-e72h.onrender.com";
 
 // Create axios instance
 const apiClient = axios.create({
