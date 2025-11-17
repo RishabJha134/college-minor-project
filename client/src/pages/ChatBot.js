@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import { Send, SmartToy } from "@mui/icons-material";
 import { MinimalLoader } from "../components/Loader";
+import { API } from "../api/axios";
 
 const ChatBot = () => {
   const theme = useTheme();
@@ -42,7 +43,7 @@ const ChatBot = () => {
     const loadingToast = toast.loading("AI is thinking...");
 
     try {
-      const { data } = await axios.post("/api/v1/openai/chatbot", { text });
+      const { data } = await API.openai.chatbot(text);
       console.log(data);
       setResponse(data.answer || data);
       toast.success("Response generated successfully!", { id: loadingToast });

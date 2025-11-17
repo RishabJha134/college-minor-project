@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { Image as ImageIcon, Send } from "@mui/icons-material";
 import { MinimalLoader } from "../components/Loader";
+import { API } from "../api/axios";
 
 const ScifiImage = () => {
   const theme = useTheme();
@@ -37,7 +38,7 @@ const ScifiImage = () => {
     const loadingToast = toast.loading("Generating sci-fi image... This may take a moment.");
 
     try {
-      const { data } = await axios.post("/api/v1/openai/scifi-image", { text });
+      const { data } = await API.openai.scifiImage(text);
       console.log(data);
       if (data.image) {
         setImage(data.image);

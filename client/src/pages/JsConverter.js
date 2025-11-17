@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { Code, Send } from "@mui/icons-material";
 import { MinimalLoader } from "../components/Loader";
+import { API } from './../api/axios';
 
 const JsConverter = () => {
   const theme = useTheme();
@@ -37,7 +38,7 @@ const JsConverter = () => {
     const loadingToast = toast.loading("Converting code...");
 
     try {
-      const { data } = await axios.post("/api/v1/openai/js-converter", { text });
+      const { data } = await API.openai.jsConverter(text);
       console.log(data);
       setCode(data.code || data);
       toast.success("Code converted successfully!", { id: loadingToast });

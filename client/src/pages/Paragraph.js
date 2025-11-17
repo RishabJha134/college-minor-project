@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { Article, Send } from "@mui/icons-material";
 import { MinimalLoader } from "../components/Loader";
+import { API } from "../api/axios";
 
 const Paragraph = () => {
   const theme = useTheme();
@@ -37,7 +38,7 @@ const Paragraph = () => {
     const loadingToast = toast.loading("Generating paragraph...");
 
     try {
-      const { data } = await axios.post("/api/v1/openai/paragraph", { text });
+      const { data } = await API.openai.paragraph(text);
       console.log(data);
       setPara(data.paragraph || data);
       toast.success("Paragraph generated!", { id: loadingToast });

@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { Summarize, Send } from "@mui/icons-material";
 import { MinimalLoader } from "../components/Loader";
+import { API } from "../api/axios";
 
 const Summary = () => {
   const theme = useTheme();
@@ -37,7 +38,7 @@ const Summary = () => {
     const loadingToast = toast.loading("Summarizing text...");
 
     try {
-      const { data } = await axios.post("/api/v1/openai/summary", { text });
+      const { data } = await API.openai.summary(text);
       console.log(data);
       setSummary(data.summary || data);
       toast.success("Summary generated!", { id: loadingToast });

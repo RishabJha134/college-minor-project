@@ -1713,7 +1713,7 @@ const Homepage = () => {
                 transition: "all 0.3s ease",
               }}
             >
-              Start Free Trial
+              Get Started
             </Button>
           </Box>
         </Container>
